@@ -1,0 +1,128 @@
+<xmlns:v="urn:schemas-microsoft-com:vml"
+<xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+<!--[if gte mso 9]><xml>
+ <o:OfficeDocumentSettings>
+  <o:AllowPNG/>
+  <o:PixelsPerInch>96</o:PixelsPerInch>
+ </o:OfficeDocumentSettings>
+</xml><![endif]-->
+</head>
+<!--[if (gte mso 9)|(IE)]>
+<style type="text/css">
+table {
+border-collapse: collapse;
+border-spacing: 0; }
+</style>
+<![endif]-->
+<body style="background-color: #fafafa;">
+    <table border="0" cellpadding="0" cellspacing="0" width="799" align="center" style="background-color:white;border: 0px solid #dddddd;!important;box-shadow: 0 0px 0px rgba(192, 192, 192, 0.9);">
+        <tbody>
+
+            <tr>
+                <td style="padding: 0px 0 24px 0;background-color:  #ffffff;font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;">
+                    <img src="data:image/png;base64,{{header_img}}" width="800" style="width: 100%; max-width: 800px; height: auto;"\>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="inner" style="color: #505050;font-size: 13px;padding: 10px;background-color: #ffffff; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;">
+                    <p>Prezados,</p>
+                    <p>{{texto1}}</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                <table width="100%" border="0" cellspacing="0" cellpadding="0" style="width: 100%;min-width: 280px;background-color: #ffffff margin: auto;">
+                    <tbody>
+                    <tr width="50%">
+                        <td align="center" width="50%" style="color: #505050;font-size: 12px;padding: 5px;background-color: #ffffff; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;font-weight: bold;">
+                            Table1
+                        </td>
+                        <td align="center" width="50%" style="color: #505050;font-size: 12px;padding: 5px;background-color: #ffffff; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;font-weight: bold;">
+                            Table2</td>
+                    </tr>
+                    <tr width="50%">
+                        <td width="50%">
+
+                            <table width="99%" align="center" style="border-bottom: 1px solid #dddddd;border-top: 1px">
+                                <tbody>
+                                 <tr class="inner" style="color: #ffffff;font-size: 12px;padding: 5px;background-color: #7b7b7b; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;">
+                                    {% for column in df1.columns %}
+                                    <th align="center">{{ column }}</th>
+                                    {% endfor %}
+                                </tr>
+                                {% for idx, row in df1.iterrows() %}
+                                 <tr style="color: #505050;font-size: 12px;padding: 5px;background-color: #dedede; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;">
+                                    {% for colname in df1.columns %}
+                                    {% if colname == 'Total HH' or colname == 'Realizado' %}
+                                    <td align="center">{{"{:.2f}".format(row[colname])}}</td>
+                                    {% else %}
+                                    <td align="center">{{"{:.2f}".format(100*row[colname])}}%</td>
+                                    {% endif %}
+                                    {% endfor %}
+                                </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+
+                        </td>
+                        <td width="50%">
+                            <table width="99%" align="center" style="border-bottom: 1px solid #dddddd;border-top: 1px">
+                                <tbody>
+                                <tr style="color: #ffffff;font-size: 12px;padding: 5px;background-color: #7b7b7b; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;">
+                                    {% for column in df2.columns %}
+                                    <th align="center">{{ column }}</th>
+                                    {% endfor %}
+                                </tr>
+                                {% for idx, row in df2.iterrows() %}
+                                <tr class="inner" style="color: #505050;font-size: 12px;padding: 5px;background-color: #dedede; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;">
+                                    {% for colname in df2.columns %}
+                                    {% if colname == 'Total HH' or colname == 'Realizado' %}
+                                    <td align="center">{{"{:.2f}".format(row[colname])}}</td>
+                                    {% else %}
+                                    <td align="center">{{"{:.2f}".format(100*row[colname])}}%</td>
+                                    {% endif %}
+                                    {% endfor %}
+                                </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                </td>
+            </tr>
+            <tr>
+                <td align="center" width="100%" style="color: #505050;font-size: 12px;padding: 5px;background-color: #ffffff; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;font-weight: bold;">
+                    Chart
+                </td>
+            </tr>
+            <tr>
+                <td align="center" style="padding: 24px 0 0px 0;background-color: #ffffff;font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;">
+                    {% if planos_fig != None %}
+                    <img height="200px" src="data:image/png;base64,{{ chart_fig }}"\>
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <td align="center" width="100%" style="color: #505050;font-size: 12px;padding: 5px;background-color: #ffffff; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;font-weight: bold;">
+                </td>
+
+            </tr>
+            <tr width="799">
+                <td class="inner" style="color: #888888;font-size: 12px;padding: 10px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background-color: #eaeaea; overflow:hidden;">
+                    <b>{{texto3}}</b>
+                    <br>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse euismod viverra mi, non molestie tellus efficitur quis. Quisque tempor convallis turpis, quis condimentum dolor dapibus eget. Etiam pellentesque semper mi vitae rutrum. Sed non est massa. Nulla porttitor odio eu magna fringilla, varius tempor augue posuere. Quisque mauris augue, auctor vel porta ut, commodo in libero. Ut sed iaculis metus. Donec lorem orci, sodales eget elit ut, aliquet tincidunt urna. Morbi facilisis pretium malesuada. Nam sed sem scelerisque, efficitur justo in, malesuada velit. Quisque sed vulputate augue. Donec eros purus, posuere eget est at, rutrum scelerisque diam. Morbi urna sapien, congue vitae turpis feugiat, eleifend fringilla arcu. Maecenas sed justo ut purus auctor pretium. &nbsp;</td>
+            </tr>
+            <tr width="799" style="overflow:hidden;">
+                <td class="inner" style="color: #ffffff;font-size: 12px;padding: 10px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background-color: #014871; overflow:hidden;">
+                    {{texto2}}&nbsp;</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
